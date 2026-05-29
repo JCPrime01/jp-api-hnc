@@ -373,6 +373,32 @@ body::after {
 
 .disclaimer strong { color: rgba(255,255,255,.35); }
 
+@media (max-width: 390px) {
+  .page {
+    padding: 20px 16px 32px;
+    gap: 16px;
+  }
+  .badge {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    text-align: center;
+  }
+  .hero-odd-word { font-size: 40px; }
+  .hero-odd-num  { font-size: 72px; }
+  .subhead       { font-size: 16px; }
+  .cta {
+    font-size: 15px;
+    padding: 17px 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-odd-word { font-size: 34px; }
+  .hero-odd-num  { font-size: 60px; }
+  .subhead       { font-size: 14px; }
+}
+
 </style>
 </head>
 <body>
