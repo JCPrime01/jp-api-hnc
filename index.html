@@ -2,547 +2,543 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PSG vs Arsenal</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PSG vs Arsenal</title>
 
-  <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body{
-      overflow:hidden;
-      font-family:'Montserrat', sans-serif;
-      background:#000;
-      height:100vh;
-      color:white;
-      position:relative;
-    }
+body{
+  font-family:'Montserrat', sans-serif;
+  background:#000;
+  min-height:100vh;
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+}
 
-    /* BACKGROUND */
+/* BACKGROUND */
 
-    .background{
-      position:absolute;
-      width:100%;
-      height:100%;
-      background:
-      radial-gradient(circle at center, rgba(0,70,255,.15), transparent 30%),
-      #000;
-      overflow:hidden;
-    }
+.background{
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at center, rgba(0,70,255,.15), transparent 30%),
+  #000;
+  overflow:hidden;
+  z-index:-1;
+}
 
-    .particles{
-      position:absolute;
-      width:100%;
-      height:100%;
-      background-image:
-      radial-gradient(rgba(255,255,255,.2) 1px, transparent 1px);
-      background-size:50px 50px;
-      opacity:.15;
-      animation:particlesMove 20s linear infinite;
-    }
+.particles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image:
+  radial-gradient(rgba(255,255,255,.15) 1px, transparent 1px);
+  background-size:50px 50px;
+  opacity:.15;
+  animation:particlesMove 20s linear infinite;
+}
 
-    @keyframes particlesMove{
-      from{
-        transform:translateY(0);
-      }
-      to{
-        transform:translateY(-50px);
-      }
-    }
+@keyframes particlesMove{
+  from{
+    transform:translateY(0);
+  }
+  to{
+    transform:translateY(-50px);
+  }
+}
 
-    /* HERO */
+/* HERO */
 
-    .hero{
-      position:relative;
-      z-index:5;
-      width:100%;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      padding:20px;
-    }
+.hero{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:40px 20px 80px;
+  position:relative;
+  z-index:5;
+}
 
-    .arena{
-      width:100%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:90px;
-      margin-bottom:30px;
-      position:relative;
-    }
+/* ARENA */
 
-    .team{
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      backdrop-filter:blur(10px);
-    }
+.arena{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:70px;
+  margin-bottom:35px;
+  width:100%;
+}
 
-    .team img{
-      width:170px;
-      position:relative;
-      z-index:5;
-      filter:drop-shadow(0 0 20px rgba(255,255,255,.25));
-    }
+/* TEAM */
 
-    /* BLUE EFFECT */
+.team{
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    .psg::before{
-      content:'';
-      position:absolute;
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      background:
-      conic-gradient(
-      #00a2ff,
-      transparent,
-      #00a2ff,
-      transparent,
-      #00a2ff
-      );
-      animation:spin 4s linear infinite;
-      filter:blur(10px);
-    }
+.team img{
+  width:160px;
+  position:relative;
+  z-index:5;
+  filter:drop-shadow(0 0 20px rgba(255,255,255,.3));
+}
 
-    /* RED EFFECT */
+/* PSG */
 
-    .arsenal::before{
-      content:'';
-      position:absolute;
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      background:
-      conic-gradient(
-      #ff1e1e,
-      transparent,
-      #ff1e1e,
-      transparent,
-      #ff1e1e
-      );
-      animation:spinReverse 4s linear infinite;
-      filter:blur(10px);
-    }
+.psg::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+  conic-gradient(
+    #00a2ff,
+    transparent,
+    #00a2ff,
+    transparent,
+    #00a2ff
+  );
+  filter:blur(14px);
+  animation:spin 4s linear infinite;
+}
 
-    @keyframes spin{
-      from{
-        transform:rotate(0deg);
-      }
-      to{
-        transform:rotate(360deg);
-      }
-    }
+/* ARSENAL */
 
-    @keyframes spinReverse{
-      from{
-        transform:rotate(360deg);
-      }
-      to{
-        transform:rotate(0deg);
-      }
-    }
+.arsenal::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+  conic-gradient(
+    #ff1e1e,
+    transparent,
+    #ff1e1e,
+    transparent,
+    #ff1e1e
+  );
+  filter:blur(14px);
+  animation:spinReverse 4s linear infinite;
+}
 
-    /* VS */
+@keyframes spin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
 
-    .vs{
-      font-size:90px;
-      font-weight:900;
-      letter-spacing:5px;
-      color:white;
-      text-shadow:
-      0 0 10px white,
-      0 0 20px #0084ff,
-      0 0 50px #0084ff;
-      animation:pulse 2s infinite;
-    }
+@keyframes spinReverse{
+  from{
+    transform:rotate(360deg);
+  }
+  to{
+    transform:rotate(0deg);
+  }
+}
 
-    @keyframes pulse{
-      0%{
-        transform:scale(1);
-      }
-      50%{
-        transform:scale(1.08);
-      }
-      100%{
-        transform:scale(1);
-      }
-    }
+/* VS */
 
-    /* TIPSTER */
+.vs{
+  font-size:90px;
+  font-weight:900;
+  color:white;
+  text-shadow:
+  0 0 10px white,
+  0 0 20px #0084ff,
+  0 0 50px #0084ff;
+  animation:pulse 2s infinite;
+}
 
-    .tipster{
-      margin-top:10px;
-      text-align:center;
-      margin-bottom:35px;
-    }
+@keyframes pulse{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.08);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
 
-    .tipster-image{
-      width:140px;
-      height:140px;
-      margin:auto;
-      border-radius:50%;
-      position:relative;
-      overflow:hidden;
-      padding:4px;
-      background:linear-gradient(45deg,#00a2ff,#ff1e1e);
-      box-shadow:
-      0 0 30px rgba(0,162,255,.5),
-      0 0 50px rgba(255,30,30,.3);
-    }
+/* TIPSTER */
 
-    .tipster-image::before{
-      content:'';
-      position:absolute;
-      inset:-10px;
-      border-radius:50%;
-      background:
-      conic-gradient(
-        #00a2ff,
-        transparent,
-        #ff1e1e,
-        transparent,
-        #00a2ff
-      );
-      animation:spin 5s linear infinite;
-      filter:blur(10px);
-      z-index:0;
-    }
+.tipster{
+  text-align:center;
+  margin-bottom:35px;
+}
 
-    .tipster-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      position:relative;
-      z-index:2;
-    }
+.tipster-image{
+  width:130px;
+  height:130px;
+  margin:auto;
+  border-radius:50%;
+  position:relative;
+  overflow:hidden;
+  padding:4px;
+  background:linear-gradient(45deg,#00a2ff,#ff1e1e);
+  box-shadow:
+  0 0 30px rgba(0,162,255,.5),
+  0 0 50px rgba(255,30,30,.3);
+}
 
-    .tipster h3{
-      margin-top:18px;
-      font-size:28px;
-      font-weight:800;
-    }
+.tipster-image::before{
+  content:'';
+  position:absolute;
+  inset:-10px;
+  border-radius:50%;
+  background:
+  conic-gradient(
+    #00a2ff,
+    transparent,
+    #ff1e1e,
+    transparent,
+    #00a2ff
+  );
+  animation:spin 5s linear infinite;
+  filter:blur(10px);
+}
 
-    .tipster p{
-      margin-top:8px;
-      color:#bdbdbd;
-      font-size:15px;
-    }
+.tipster-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  position:relative;
+  z-index:5;
+}
 
-    /* CONTENT */
+.tipster h3{
+  margin-top:18px;
+  font-size:28px;
+  font-weight:900;
+}
 
-    .content{
-      text-align:center;
-      max-width:800px;
-      padding:0 20px;
-    }
+.tipster p{
+  margin-top:8px;
+  color:#bdbdbd;
+  font-size:15px;
+}
 
-    .content h1{
-      font-size:58px;
-      line-height:1.1;
-      margin-bottom:20px;
-      font-weight:900;
-    }
+/* CONTENT */
 
-    .content p{
-      color:#cfcfcf;
-      font-size:18px;
-      line-height:1.6;
-      margin-bottom:40px;
-    }
+.content{
+  text-align:center;
+  max-width:800px;
+}
 
-    /* BUTTON */
+.content h1{
+  font-size:70px;
+  font-weight:900;
+  margin-bottom:20px;
+}
 
-    .cta{
-      position:relative;
-      padding:22px 70px;
-      border:none;
-      border-radius:999px;
-      background:linear-gradient(90deg,#004cff,#ff1e1e);
-      color:white;
-      font-size:22px;
-      font-weight:800;
-      cursor:pointer;
-      overflow:hidden;
-      transition:.3s;
-      box-shadow:
-      0 0 20px rgba(0,100,255,.5),
-      0 0 50px rgba(255,0,0,.2);
-    }
+.content p{
+  color:#cfcfcf;
+  font-size:20px;
+  line-height:1.6;
+  margin-bottom:40px;
+}
 
-    .cta:hover{
-      transform:scale(1.05);
-    }
+/* BUTTON */
 
-    /* ENERGY */
+.cta{
+  border:none;
+  border-radius:999px;
+  padding:22px 70px;
+  background:linear-gradient(90deg,#004cff,#ff1e1e);
+  color:white;
+  font-size:22px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:
+  0 0 20px rgba(0,100,255,.5),
+  0 0 50px rgba(255,0,0,.2);
+}
 
-    .energy{
-      position:absolute;
-      width:15px;
-      height:15px;
-      border-radius:50%;
-      filter:blur(2px);
-      pointer-events:none;
-      z-index:999;
-    }
+.cta:hover{
+  transform:scale(1.05);
+}
 
-    /* MOBILE */
+/* ENERGY */
 
-    @media(max-width:900px){
+.energy{
+  position:absolute;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  filter:blur(2px);
+  pointer-events:none;
+  z-index:999;
+}
 
-      body{
-        overflow:auto;
-      }
+/* MOBILE */
 
-      .hero{
-        height:auto;
-        padding:60px 20px;
-      }
+@media(max-width:900px){
 
-      .arena{
-        flex-direction:column;
-        gap:25px;
-      }
+  .arena{
+    gap:15px;
+    margin-bottom:25px;
+  }
 
-      .team{
-        width:180px;
-        height:180px;
-      }
+  .team{
+    width:120px;
+    height:120px;
+  }
 
-      .team img{
-        width:110px;
-      }
+  .team img{
+    width:75px;
+  }
 
-      .vs{
-        font-size:50px;
-      }
+  .vs{
+    font-size:42px;
+  }
 
-      .content h1{
-        font-size:38px;
-      }
+  .tipster-image{
+    width:90px;
+    height:90px;
+  }
 
-      .cta{
-        padding:18px 40px;
-        font-size:18px;
-      }
+  .tipster h3{
+    font-size:22px;
+  }
 
-    }
+  .tipster p{
+    font-size:13px;
+    padding:0 10px;
+  }
 
-  </style>
+  .content h1{
+    font-size:42px;
+    line-height:1;
+  }
+
+  .content p{
+    font-size:15px;
+    line-height:1.5;
+    margin-bottom:30px;
+    padding:0 10px;
+  }
+
+  .cta{
+    width:100%;
+    max-width:320px;
+    padding:18px 20px;
+    font-size:18px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="background">
-    <div class="particles"></div>
+<div class="background">
+  <div class="particles"></div>
+</div>
+
+<section class="hero">
+
+  <div class="arena">
+
+    <div class="team psg" id="psg">
+      <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg">
+    </div>
+
+    <div class="vs">
+      VS
+    </div>
+
+    <div class="team arsenal" id="arsenal">
+      <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg">
+    </div>
+
   </div>
 
-  <section class="hero">
+  <div class="tipster">
 
-    <!-- TEAMS -->
-
-    <div class="arena">
-
-      <!-- PSG -->
-      <div class="team psg" id="psg">
-        <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg">
-      </div>
-
-      <!-- VS -->
-      <div class="vs">VS</div>
-
-      <!-- ARSENAL -->
-      <div class="team arsenal" id="arsenal">
-        <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg">
-      </div>
-
+    <div class="tipster-image">
+      <!-- SUA FOTO -->
+      <img src="https://i.imgur.com/8Km9tLL.jpg">
     </div>
 
-    <!-- TIPSTER -->
+    <h3>@SEUTIPSTER</h3>
 
-    <div class="tipster">
+    <p>
+      Especialista em Champions League • ROI 18.7%
+    </p>
 
-      <div class="tipster-image">
-        <!-- COLOQUE SUA FOTO AQUI -->
-        <img src="https://i.imgur.com/8Km9tLL.jpg">
-      </div>
+  </div>
 
-      <h3>@SEUTIPSTER</h3>
+  <div class="content">
 
-      <p>
-        Especialista em Champions League • ROI 18.7%
-      </p>
+    <h1>
+      PSG vs Arsenal
+    </h1>
 
-    </div>
+    <p>
+      O maior confronto da Champions está chegando.
+      Entre agora para receber análises premium, entradas ao vivo e oportunidades exclusivas.
+    </p>
 
-    <!-- CONTENT -->
+    <button class="cta" id="cta">
+      ENTRAR NO VIP
+    </button>
 
-    <div class="content">
+  </div>
 
-      <h1>
-        PSG vs Arsenal
-      </h1>
+</section>
 
-      <p>
-        O maior confronto da Champions está chegando.
-        Entre agora para receber análises premium, entradas ao vivo e oportunidades exclusivas.
-      </p>
+<script>
 
-      <button class="cta" id="cta">
-        ENTRAR NO VIP
-      </button>
+// INTRO
 
-    </div>
+gsap.from("#psg",{
+  x:-500,
+  opacity:0,
+  duration:1.5,
+  ease:"power4.out"
+});
 
-  </section>
+gsap.from("#arsenal",{
+  x:500,
+  opacity:0,
+  duration:1.5,
+  ease:"power4.out"
+});
 
-  <script>
+gsap.from(".vs",{
+  scale:0,
+  opacity:0,
+  duration:1,
+  delay:.5
+});
 
-    // INTRO ANIMATION
+gsap.from(".tipster",{
+  y:50,
+  opacity:0,
+  duration:1,
+  delay:.8
+});
 
-    gsap.from("#psg",{
-      x:-500,
-      opacity:0,
-      duration:1.5,
-      ease:"power4.out"
+gsap.from(".content",{
+  y:80,
+  opacity:0,
+  duration:1,
+  delay:1
+});
+
+// FLOAT
+
+gsap.to("#psg",{
+  y:-10,
+  duration:2,
+  repeat:-1,
+  yoyo:true,
+  ease:"sine.inOut"
+});
+
+gsap.to("#arsenal",{
+  y:-10,
+  duration:2.3,
+  repeat:-1,
+  yoyo:true,
+  ease:"sine.inOut"
+});
+
+gsap.to(".tipster-image",{
+  y:-5,
+  duration:2,
+  repeat:-1,
+  yoyo:true,
+  ease:"sine.inOut"
+});
+
+// BUTTON
+
+const cta = document.getElementById("cta");
+
+cta.addEventListener("click",()=>{
+
+  createEnergy("#00a2ff", window.innerWidth/2 - 150);
+  createEnergy("#ff1e1e", window.innerWidth/2 + 150);
+
+  gsap.to(".cta",{
+    scale:1.1,
+    duration:.2,
+    yoyo:true,
+    repeat:1
+  });
+
+  setTimeout(()=>{
+    window.location.href = "https://t.me/seulink";
+  },1200);
+
+});
+
+// ENERGY
+
+function createEnergy(color,startX){
+
+  for(let i=0;i<40;i++){
+
+    const particle = document.createElement("div");
+
+    particle.classList.add("energy");
+
+    particle.style.background = color;
+
+    document.body.appendChild(particle);
+
+    gsap.set(particle,{
+      x:startX,
+      y:window.innerHeight/2 - 100
     });
 
-    gsap.from("#arsenal",{
-      x:500,
+    gsap.to(particle,{
+      x:window.innerWidth/2,
+      y:window.innerHeight - 120,
       opacity:0,
-      duration:1.5,
-      ease:"power4.out"
-    });
-
-    gsap.from(".vs",{
       scale:0,
-      opacity:0,
-      duration:1,
-      delay:.6
-    });
-
-    gsap.from(".tipster",{
-      y:80,
-      opacity:0,
       duration:1.2,
-      delay:.9
-    });
-
-    gsap.from(".content",{
-      y:100,
-      opacity:0,
-      duration:1.2,
-      delay:1.1
-    });
-
-    // FLOAT EFFECT
-
-    gsap.to("#psg",{
-      y:-15,
-      duration:2,
-      repeat:-1,
-      yoyo:true,
-      ease:"sine.inOut"
-    });
-
-    gsap.to("#arsenal",{
-      y:-15,
-      duration:2.3,
-      repeat:-1,
-      yoyo:true,
-      ease:"sine.inOut"
-    });
-
-    gsap.to(".tipster-image",{
-      y:-8,
-      duration:2,
-      repeat:-1,
-      yoyo:true,
-      ease:"sine.inOut"
-    });
-
-    // BUTTON EFFECT
-
-    const cta = document.getElementById("cta");
-
-    cta.addEventListener("click",()=>{
-
-      createEnergy("#00a2ff", window.innerWidth/2 - 180);
-      createEnergy("#ff1e1e", window.innerWidth/2 + 180);
-
-      gsap.to(".cta",{
-        scale:1.1,
-        duration:.2,
-        yoyo:true,
-        repeat:1
-      });
-
-      // REDIRECT
-
-      setTimeout(()=>{
-        window.location.href = "https://t.me/seulink";
-      },1200);
-
-    });
-
-    // ENERGY PARTICLES
-
-    function createEnergy(color, startX){
-
-      for(let i=0;i<40;i++){
-
-        const particle = document.createElement("div");
-
-        particle.classList.add("energy");
-
-        particle.style.background = color;
-
-        document.body.appendChild(particle);
-
-        gsap.set(particle,{
-          x:startX,
-          y:window.innerHeight/2 - 100
-        });
-
-        gsap.to(particle,{
-          x:window.innerWidth/2,
-          y:window.innerHeight - 140,
-          opacity:0,
-          scale:0,
-          duration:1.2,
-          delay:i * 0.02,
-          ease:"power2.out",
-          onComplete:()=>{
-            particle.remove();
-          }
-        });
-
+      delay:i * 0.02,
+      ease:"power2.out",
+      onComplete:()=>{
+        particle.remove();
       }
+    });
 
-    }
+  }
 
-  </script>
+}
+
+</script>
 
 </body>
 </html>
-```
