@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Odd 100 — Copa do Mundo FIFA™️</title>
+<title>Odd 100 — Liberação Exclusiva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 <script>
+// Seu Pixel do Facebook Mantido
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -22,686 +23,364 @@ fbq('track', 'PageView');
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080808;--bg2:#0e0e0e;
-  --green:#00FF88;--blue:#0066FF;--gold:#FFC107;
-  --white:#FFFFFF;--gray:#CFCFCF;--gray2:#888888;
-  --border:rgba(255,255,255,0.08);
-  --border-glow:rgba(0,255,136,0.25);
-  --glass:rgba(255,255,255,0.04);
-  --glass-strong:rgba(255,255,255,0.07);
-  --radius:18px;--radius-sm:12px;--radius-pill:999px;
+  --bg-main: #020617;
+  --bg-card: rgba(15, 23, 42, 0.4);
+  --green-whatsapp: #00E676;
+  --green-glow: rgba(0, 230, 118, 0.15);
+  --accent-blue: #38bdf8;
+  --white: #f8fafc;
+  --gray-text: #94a3b8;
+  --border-light: rgba(255, 255, 255, 0.05);
 }
-html{scroll-behavior:smooth}
+
 body{
-  background:var(--bg);
-  color:var(--white);
-  font-family:'Inter',sans-serif;
-  line-height:1.6;
-  overflow-x:hidden;
-  min-height:100svh;
+  background-color: var(--bg-main);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* NOISE */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:0.5;
+/* Background dinâmico com luzes neon de estádio */
+.bg-glows {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+}
+.glow-1 {
+  position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+}
+.glow-2 {
+  position: absolute; bottom: -10%; right: -10%; width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(0, 230, 118, 0.05) 0%, transparent 70%);
 }
 
-.page-glass-bg{
-  position:fixed;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(0,102,255,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 60% at 85% 80%, rgba(0,255,136,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255,193,7,0.03) 0%, transparent 70%);
-  pointer-events:none;
+/* CONTAINER EM SPLIT (TELA DIVIDIDA NO PC, APP NO CELULAR) */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.container{max-width:700px;margin:0 auto;padding:0 20px}
-
-.gradient-text{
-  background:linear-gradient(135deg,var(--green) 0%,#00BFFF 50%,var(--blue) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.gold-text{
-  background:linear-gradient(135deg,var(--gold),#FFE066);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+/* LADO ESQUERDO: COPY PRINCIPAL */
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  z-index: 2;
 }
 
-/* ANIMATIONS */
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes driftBall{
-  0%{transform:translateX(-120px) translateY(0) rotate(0deg);opacity:0}
-  5%{opacity:0.12}
-  95%{opacity:0.12}
-  100%{transform:translateX(calc(100vw + 120px)) translateY(-60px) rotate(720deg);opacity:0}
+.brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-@keyframes pulse-glow-blue{
-  0%,100%{box-shadow:0 0 36px rgba(34,158,217,0.4),0 4px 20px rgba(0,0,0,0.4)}
-  50%{box-shadow:0 0 56px rgba(34,158,217,0.65),0 4px 20px rgba(0,0,0,0.4)}
+.brand span { color: var(--green-whatsapp); }
+
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  color: var(--green-whatsapp);
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  margin-bottom: 24px;
 }
-@keyframes pulse-glow{
-  0%,100%{box-shadow:0 0 36px rgba(0,255,136,0.32),0 4px 20px rgba(0,0,0,0.4)}
-  50%{box-shadow:0 0 56px rgba(0,255,136,0.55),0 4px 20px rgba(0,0,0,0.4)}
+.badge-live .dot {
+  width: 6px; height: 6px; background: var(--green-whatsapp);
+  border-radius: 50%; animation: pulseBlink 1.5s infinite;
 }
 
-/* NAV */
-nav{
-  position:fixed;top:0;width:100%;z-index:200;
-  padding:13px 0;
-  background:rgba(8,8,8,0.75);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow 0.3s;
+h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-badge{
-  width:34px;height:34px;
-  background:linear-gradient(135deg,var(--green),var(--blue));
-  border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;
-}
-.logo-text{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;color:var(--white)}
-.logo-text span{color:var(--green)}
-.nav-badge{
-  background:rgba(0,255,136,0.08);
-  border:1px solid var(--border-glow);
-  border-radius:var(--radius-pill);
-  padding:5px 14px;font-size:11px;font-weight:600;
-  color:var(--green);letter-spacing:1px;text-transform:uppercase;
+h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #fff 0%, var(--green-whatsapp) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* TICKER */
-.ticker-wrap{
-  position:fixed;top:60px;left:0;right:0;z-index:190;
-  background:rgba(8,8,8,0.65);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;height:52px;
-}
-.ticker-inner{
-  display:flex;align-items:center;height:100%;
-  animation:scrollLeft 28s linear infinite;
-  width:max-content;
-}
-.ticker-inner:hover{animation-play-state:paused}
-.ticker-item{
-  display:flex;align-items:center;gap:12px;
-  padding:0 32px;height:100%;
-  border-right:1px solid var(--border);
-  white-space:nowrap;cursor:pointer;
-  transition:background 0.2s;
-  flex-shrink:0;
-}
-.ticker-item:hover{background:rgba(0,255,136,0.05)}
-.ticker-flag{font-size:18px;line-height:1}
-.ticker-teams{font-size:12px;font-weight:700;letter-spacing:0.3px;color:var(--white)}
-.ticker-vs{font-size:10px;color:var(--gray2);font-weight:500;margin:0 4px}
-.ticker-time{
-  font-size:10px;font-weight:700;color:var(--green);
-  background:rgba(0,255,136,0.1);
-  border:1px solid rgba(0,255,136,0.2);
-  border-radius:var(--radius-pill);
-  padding:2px 8px;
-}
-.ticker-sep{
-  width:4px;height:4px;border-radius:50%;
-  background:rgba(255,255,255,0.15);
-  margin:0 8px;flex-shrink:0;
+.subtitle {
+  color: var(--gray-text);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 40px;
 }
 
-/* AMBIENT BALLS */
-.ball-ambient{
-  position:fixed;z-index:1;pointer-events:none;
-  font-size:200px;line-height:1;
-  opacity:0;
-  animation:driftBall 22s ease-in-out infinite;
-  top:30vh;left:0;
-  filter:blur(2px) grayscale(0.4);
-  will-change:transform,opacity;
+/* BOTÃO WHATSAPP ULTRA MODERNO */
+.btn-whatsapp-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--green-whatsapp);
+  color: #020617;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 20px 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px var(--green-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-.ball-ambient.b2{
-  animation-delay:-11s;
-  top:55vh;
-  font-size:140px;
+.btn-whatsapp-main:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 230, 118, 0.35);
+}
+.btn-whatsapp-main svg { width: 24px; height: 24px; fill: currentColor; }
+
+/* MINI BENEFÍCIOS GRID */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  max-width: 500px;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--gray-text);
+}
+.feature-item icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-light); border-radius: 6px; color: var(--green-whatsapp);
 }
 
-/* HERO */
-.hero{
-  position:relative;z-index:2;
-  min-height:100svh;
-  display:flex;align-items:center;justify-content:center;
-  padding-top:120px;
-  overflow:hidden;
+/* LADO DIREITO: GRID DE JOGOS (ESTILO APP DE APOSTAS) */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
 }
 
-.hero-glass-panel{
-  position:absolute;border-radius:24px;
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.05);
-  pointer-events:none;
-}
-.hgp1{width:340px;height:340px;background:rgba(0,102,255,0.05);top:-60px;right:-80px;transform:rotate(20deg)}
-.hgp2{width:260px;height:260px;background:rgba(0,255,136,0.04);bottom:60px;left:-60px;transform:rotate(-15deg)}
-.hgp3{width:180px;height:180px;background:rgba(255,193,7,0.03);top:30%;left:-40px;transform:rotate(8deg)}
-
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg svg{width:100%;height:100%}
-
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0,255,136,0.06) 0%, transparent 60%),
-    linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.55) 40%, rgba(8,8,8,0.97) 100%);
+.section-right-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-blue);
+  margin-bottom: 24px;
 }
 
-.hero-content{
-  position:relative;z-index:3;
-  text-align:center;
-  padding:40px 0 80px;
-  width:100%;
+.games-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.hero-glass-card{
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:28px;
-  padding:52px 40px 48px;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.03) inset,
-    0 40px 80px rgba(0,0,0,0.5),
-    0 0 60px rgba(0,255,136,0.03);
-  animation:fadeIn 0.6s ease both;
+.game-row {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+.game-row:hover {
+  border-color: rgba(56, 189, 248, 0.2);
+  background: rgba(15, 23, 42, 0.6);
 }
 
-/* URGENCY — topo do card */
-.urgency-alert{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,79,79,0.08);
-  border:1px solid rgba(255,79,79,0.25);
-  border-radius:var(--radius-pill);
-  padding:7px 18px;
-  font-size:11px;font-weight:700;
-  color:#FF6B6B;letter-spacing:1.5px;text-transform:uppercase;
-  margin-bottom:22px;
-  animation:fadeUp 0.45s ease 0.02s both;
+.game-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-bottom: 14px;
+  font-weight: 600;
 }
-.urgency-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:#FF6B6B;animation:blink 1s ease-in-out infinite;
+.game-meta .time { color: var(--accent-blue); }
+
+.game-teams-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.team-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.team-flag { font-size: 20px; line-height: 1; }
+
+.btn-get-odd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-light);
+  color: var(--white);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-get-odd:hover {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: var(--green-whatsapp);
+  color: var(--green-whatsapp);
 }
 
-.hero-title{
-  font-size:clamp(30px,6.5vw,54px);
-  font-weight:900;line-height:1.08;
-  letter-spacing:-1.5px;margin-bottom:18px;
-  animation:fadeUp 0.55s ease 0.08s both;
-}
-.hero-subtitle{
-  font-size:clamp(14px,2.2vw,17px);
-  color:var(--gray);max-width:480px;
-  margin:0 auto 36px;line-height:1.8;font-weight:400;
-  animation:fadeUp 0.55s ease 0.14s both;
+/* FOOTER SIMPLES */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 11px;
+  color: rgba(148, 163, 184, 0.4);
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
 }
 
-.cta-stack{
-  display:flex;flex-direction:column;align-items:center;gap:16px;
-  animation:fadeUp 0.55s ease 0.2s both;
+/* ANIMATION */
+@keyframes pulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
 }
 
-.btn-primary{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(135deg,#229ED9,#1A7FC1);
-  color:#fff;font-size:16px;font-weight:800;
-  padding:17px 42px;border-radius:var(--radius-pill);
-  text-decoration:none;
-  transition:transform 0.25s ease, box-shadow 0.25s ease;
-  animation:pulse-glow-blue 2.5s ease-in-out infinite;
-  letter-spacing:0.3px;width:100%;max-width:360px;
-}
-.btn-primary:hover{
-  transform:translateY(-3px) scale(1.02);
-  animation:none;
-  box-shadow:0 0 60px rgba(34,158,217,0.6),0 8px 30px rgba(0,0,0,0.5);
-}
-.btn-icon{font-size:19px;line-height:1}
-
-.cta-note{
-  font-size:12px;color:var(--gray2);
-  display:flex;align-items:center;gap:6px;
-}
-.cta-note::before,.cta-note::after{
-  content:'';flex:1;height:1px;
-  background:rgba(255,255,255,0.07);
-}
-
-/* MATCHES SECTION */
-.matches-section{
-  position:relative;z-index:2;
-  padding:64px 0 40px;
-}
-
-.matches-header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  margin-bottom:32px;flex-wrap:wrap;gap:14px;
-}
-.section-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--green);margin-bottom:10px;
-}
-.section-eyebrow::before{
-  content:'';width:16px;height:2px;
-  background:var(--green);border-radius:2px;
-}
-.section-title{
-  font-size:clamp(22px,4vw,34px);
-  font-weight:800;letter-spacing:-0.8px;line-height:1.12;
-}
-.live-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,79,79,0.1);
-  border:1px solid rgba(255,79,79,0.28);
-  border-radius:var(--radius-pill);
-  padding:5px 13px;font-size:11px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:#FF4F4F;
-}
-.live-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:#FF4F4F;animation:blink 1s ease-in-out infinite;
-}
-
-/* MATCH CARDS */
-.match-card{
-  background:rgba(255,255,255,0.04);
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.09);
-  border-radius:var(--radius);
-  padding:24px 26px;margin-bottom:14px;
-  position:relative;overflow:hidden;
-  transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.03) inset;
-}
-.match-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,255,136,0.03) 0%,transparent 60%);
-  opacity:0;transition:opacity 0.3s;pointer-events:none;
-}
-.match-card::after{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(to bottom,var(--green),var(--blue));
-  opacity:0;transition:opacity 0.3s;
-}
-.match-card:hover{
-  border-color:rgba(0,255,136,0.2);
-  transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.45),0 0 40px rgba(0,255,136,0.06),0 0 0 1px rgba(0,255,136,0.06) inset;
-}
-.match-card:hover::before,.match-card:hover::after{opacity:1}
-
-.match-tournament{
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:18px;font-size:11px;font-weight:600;
-  color:var(--gray2);text-transform:uppercase;letter-spacing:1px;
-}
-.match-phase{
-  margin-left:auto;
-  background:rgba(255,193,7,0.08);
-  border:1px solid rgba(255,193,7,0.18);
-  border-radius:var(--radius-pill);
-  padding:2px 10px;font-size:10px;color:var(--gold);letter-spacing:0.8px;
-}
-.match-teams{
-  display:grid;grid-template-columns:1fr auto 1fr;
-  align-items:center;gap:18px;margin-bottom:20px;
-}
-.team{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center}
-.team-flag{font-size:42px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.6))}
-.team-name{font-size:14px;font-weight:700;letter-spacing:0.2px}
-.team-abbr{font-size:10px;color:var(--gray2);font-weight:600;letter-spacing:1px}
-.vs-block{display:flex;flex-direction:column;align-items:center;gap:8px}
-.vs-text{font-family:'Bebas Neue',sans-serif;font-size:21px;color:var(--gray2);letter-spacing:4px}
-.match-time{
-  font-size:12px;font-weight:700;color:var(--green);
-  background:rgba(0,255,136,0.09);
-  border:1px solid rgba(0,255,136,0.2);
-  border-radius:var(--radius-pill);padding:3px 11px;white-space:nowrap;
-}
-.match-odds{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:18px;border-top:1px solid rgba(255,255,255,0.06);gap:12px;flex-wrap:wrap;
-}
-.odd-left{display:flex;flex-direction:column;gap:6px}
-.odd-label{font-size:10px;color:var(--gray2);text-transform:uppercase;letter-spacing:1px;font-weight:600}
-.odd-market-tag{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(0,102,255,0.09);
-  border:1px solid rgba(0,102,255,0.18);
-  border-radius:var(--radius-pill);padding:3px 10px;
-  font-size:11px;color:#5599FF;font-weight:600;
-}
-.odd-from{display:flex;align-items:center;gap:9px}
-.odd-striked{font-size:13px;color:var(--gray2);text-decoration:line-through;opacity:0.5}
-.odd-right{display:flex;align-items:center;gap:10px}
-.lock-icon{
-  width:34px;height:34px;
-  background:linear-gradient(135deg,var(--gold),#FFE066);
-  border-radius:9px;display:flex;align-items:center;justify-content:center;
-  font-size:15px;flex-shrink:0;
-  box-shadow:0 0 16px rgba(255,193,7,0.28);
-}
-.odd-big{font-size:30px;font-weight:900;line-height:1}
-.odd-big-label{font-size:10px;color:var(--gray2);text-transform:uppercase;letter-spacing:1px}
-
-/* BLURRED CARD (locked) */
-.match-card.locked .match-odds .odd-big{
-  filter:blur(6px);user-select:none;
-}
-
-/* FOOTER */
-.footer-bar{
-  position:relative;z-index:2;
-  padding:28px 0 24px;
-  border-top:1px solid var(--border);
-  text-align:center;
-  background:rgba(8,8,8,0.6);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-}
-.footer-access{font-size:13px;font-weight:600;color:var(--gray2);margin-bottom:8px}
-.footer-access span{color:var(--green)}
-.footer-dot{color:rgba(255,255,255,0.15);margin:0 7px}
-.footer-disclaimer{
-  font-size:11px;color:rgba(136,136,136,0.6);
-  line-height:1.7;max-width:480px;margin:0 auto;
-}
-.footer-disclaimer strong{color:var(--gray2)}
-
-/* REVEAL */
-.reveal{
-  opacity:0;transform:translateY(22px);
-  transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.rd1{transition-delay:0.08s}.rd2{transition-delay:0.18s}.rd3{transition-delay:0.28s}
-
-/* RESPONSIVE */
-@media(max-width:540px){
-  /* hero */
-  .hero{padding-top:128px}
-  .hero-glass-card{padding:30px 18px 32px}
-  .hero-title{letter-spacing:-1px}
-  .hero-subtitle{font-size:14px;margin-bottom:28px}
-
-  /* nav */
-  .nav-badge{display:none}
-
-  /* decorações desnecessárias */
-  .hgp1,.hgp2,.hgp3{display:none}
-  .ball-ambient{display:none}
-
-  /* ticker */
-  .ticker-wrap{height:44px}
-  .ticker-item{padding:0 18px;gap:8px}
-  .ticker-teams{font-size:11px}
-  .ticker-flag{font-size:15px}
-
-  /* match cards */
-  .matches-section{padding:40px 0 32px}
-  .match-card{padding:18px 14px}
-  .match-teams{gap:8px;margin-bottom:16px}
-  .team-flag{font-size:30px}
-  .team-name{font-size:12px}
-  .team-abbr{font-size:9px}
-  .vs-text{font-size:17px}
-  .odd-big{font-size:24px}
-  .odd-market-tag{font-size:10px;padding:2px 8px}
-  .match-phase{font-size:9px}
-
-  /* cta */
-  .btn-primary{font-size:15px;padding:15px 20px;gap:8px}
-  .cta-note{font-size:11px}
-}
-
-/* telas muito pequenas: iPhone SE, Galaxy A */
-@media(max-width:360px){
-  .hero-glass-card{padding:24px 14px 26px}
-  .hero-title{font-size:26px}
-  .team-flag{font-size:26px}
-  .odd-big{font-size:21px}
-  .btn-primary{font-size:14px;padding:14px 16px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+/* RESPONSIVIDADE (A MÁGICA ACONTECE AQUI) */
+@media (max-width: 1024px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+  .left-side {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    align-items: center;
+  }
+  .right-side {
+    padding: 20px;
+    border-left: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .features-grid {
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: left;
+  }
+  .brand { margin-bottom: 24px; }
 }
 </style>
 </head>
 <body>
 
-<div class="page-glass-bg"></div>
-
-<!-- AMBIENT BALLS -->
-<div class="ball-ambient">⚽</div>
-<div class="ball-ambient b2">⚽</div>
-
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#" class="logo"></a>
-      <span class="nav-badge">🔒 Gratuito</span>
-    </div>
-  </div>
-</nav>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner" id="tickerInner"></div>
+<div class="bg-glows">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glass-panel hgp1"></div>
-  <div class="hero-glass-panel hgp2"></div>
-  <div class="hero-glass-panel hgp3"></div>
-
-  <div class="hero-bg">
-    <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <radialGradient id="lg" cx="50%" cy="0%" r="70%">
-          <stop offset="0%" stop-color="#fff" stop-opacity="0.06"/>
-          <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <polygon points="80,0 155,0 455,480 380,480" fill="url(#lg)" opacity="0.7"/>
-      <polygon points="1285,0 1360,0 1060,480 985,480" fill="url(#lg)" opacity="0.7"/>
-    </svg>
-  </div>
-  <div class="hero-overlay"></div>
-
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-glass-card">
-
-        <div class="urgency-alert">
-          <span class="urgency-dot"></span>
-          Oferta por tempo limitado
-        </div>
-
-        <h1 class="hero-title">
-          Você recebeu o<br/>
-          <span class="gold-text">bilhete gratuito</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Receba agora o bilhete da ODD100 e das demais oportunidades que envio todos os dias no meu grupo gratuito no Telegram.
-        </p>
-
-        <div class="cta-stack">
-          <a href="https://track.grupojc.cc/track/2b978e7e-ce0e-4a1e-bdb7-5b29d12ac761/redirect?utm_campaign=esp" class="btn-primary" onclick="fbq('track', 'CompleteRegistration');">
-            📩 RECEBER NO TELEGRAM
-            <span class="btn-icon">›</span>
-          </a>
-          <span class="cta-note">Sem cadastro · 100% gratuito</span>
-        </div>
-
-      </div>
+<main class="split-layout">
+  
+  <!-- LADO ESQUERDO: CONVERSÃO COMPLETA -->
+  <section class="left-side">
+    <div class="brand">ODD<span>100</span></div>
+    
+    <div class="badge-live">
+      <span class="dot"></span> Liberando Palpites Agora
     </div>
-  </div>
-</section>
 
-<!-- MATCHES -->
-<section class="matches-section">
-  <div class="container">
-    <div class="matches-header reveal rd1">
-      <div>
-        <div class="section-eyebrow">Copa do Mundo</div>
-        <h2 class="section-title">Jogos de Hoje</h2>
-      </div>
-      <span class="live-badge">
-        <span class="live-dot"></span> Ao Vivo
-      </span>
+    <h1>Seu acesso exclusivo foi enviado ao <em>WhatsApp</em></h1>
+    
+    <p class="subtitle">
+      A nossa inteligência esportiva mapeou as melhores entradas de hoje com potencial de ODD 100. Toque abaixo para resgatar diretamente no seu celular de forma 100% gratuita.
+    </p>
+
+    <!-- Substitua pelo seu link do WhatsApp -->
+    <a href="https://wa.me/5500000000000?text=Quero%20receber%20o%20bilhete%20premiado%20de%20hoje" class="btn-whatsapp-main" onclick="fbq('track', 'Lead');">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.415 9.848-9.847.002-2.632-1.019-5.105-2.876-6.964-1.857-1.859-4.331-2.88-6.967-2.881-5.43 0-9.848 4.415-9.851 9.847-.001 1.93.501 3.812 1.457 5.416l-.991 3.613 3.708-.972zm11.724-4.576c-.32-.16-1.891-.932-2.184-1.039-.294-.107-.507-.16-.721.16-.213.32-.826 1.039-1.013 1.253-.187.213-.373.24-.693.08-1.558-.777-2.586-1.325-3.617-3.093-.272-.467.272-.433.778-1.44.08-.16.04-.3-.02-.426-.06-.127-.507-1.226-.693-1.68-.182-.438-.367-.38-.507-.387-.13-.006-.28-.006-.426-.006-.147 0-.387.054-.587.272-.2.213-.76.742-.76 1.81 0 1.067.773 2.098.88 2.246.107.147 1.522 2.323 3.687 3.259.515.223.917.356 1.23.455.518.164.989.141 1.361.085.414-.062 1.891-.773 2.158-1.48.267-.707.267-1.314.187-1.44-.08-.126-.293-.207-.613-.367z"/>
+      </svg>
+      Resgatar Bilhete Grátis
+    </a>
+
+    <div class="features-grid">
+      <div class="feature-item"><icon>✓</icon> Zero taxas ou assinaturas ocultas</div>
+      <div class="feature-item"><icon>✓</icon> Robô de análise atualizado há 4 minutos</div>
+      <div class="feature-item"><icon>✓</icon> Palpites direto no seu WhatsApp</div>
+      <div class="feature-item"><icon>✓</icon> Mais de 4.800 pessoas já lucrando</div>
     </div>
-    <div id="matchCards"></div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<div class="footer-bar">
-  <div class="container">
-    <p class="footer-access">
-      <span>Acesso gratuito</span>
-      <span class="footer-dot">·</span>
-      <span>Sem cadastro</span>
-    </p>
-    <p class="footer-disclaimer">
-      <strong>+18 · Jogue com responsabilidade.</strong><br/>
-      Apostas envolvem risco de perda. Jogar pode causar dependência.
-    </p>
-  </div>
-</div>
+  <!-- LADO DIREITO: GRADE DE JOGOS PREMIUM -->
+  <section class="right-side">
+    <h2 class="section-right-title">Análises Disponíveis no Zap</h2>
+    <div class="games-container" id="gamesContainer"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p style="margin-bottom: 6px;"><strong>+18 | Jogue com Responsabilidade</strong></p>
+  <p>Os prognósticos disponibilizados via WhatsApp são baseados em estatísticas matemáticas e probabilidades. Resultados passados não garantem lucros futuros.</p>
+</footer>
 
 <script>
-/* ── DATA ── */
+// Dados mantidos da sua estrutura original de partidas
 const matches = [
-  {
-    f1:'🇵🇹', t1:'Portugal', a1:'POR',
-    f2:'🇪🇸', t2:'Espanha', a2:'ESP',
-    time:'16:00', phase:'Oitavas de Final', tournament:'🌍 Copa do Mundo FIFA™️',
-  },
-  {
-    f1:'🇺🇸', t1:'Estados Unidos', a1:'USA',
-    f2:'🇧🇪', t2:'Bélgica', a2:'BEL',
-    time:'21:00', phase:'Oitavas de Final', tournament:'🌍 Copa do Mundo FIFA™️',
-  },
-  {
-    f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Vila_Nova_Logo_Oficial.svg" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">', t1:'Vila Nova', a1:'VIL',
-    f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/88/S%C3%A3o_Bernardo_FC_2020_crest.png" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">', t2:'São Bernardo FC', a2:'SBF',
-    time:'19:00', phase:'Série B Superbet · Rodada 16', tournament:'⚽ Brasileirão Série B',
-  },
-  {
-    f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Botafogo_Futebol_Clube_%28Ribeir%C3%A3o_Preto%29_logo_%282021%29.png" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">', t1:'Botafogo-SP', a1:'BOT',
-    f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ava%C3%AD_Futebol_Clube_logo.svg" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">', t2:'Avaí', a2:'AVA',
-    time:'19:00', phase:'Série B Superbet · Rodada 16', tournament:'⚽ Brasileirão Série B',
-  },
+  { f1:'🇵🇹', t1:'Portugal', f2:'🇪🇸', t2:'Espanha', time:'16:00', tournament:'🌍 Copa do Mundo FIFA™️' },
+  { f1:'🇺🇸', t1:'Estados Unidos', f2:'🇧🇪', t2:'Bélgica', time:'21:00', tournament:'🌍 Copa do Mundo FIFA™️' },
+  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Vila_Nova_Logo_Oficial.svg" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t1:'Vila Nova', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/88/S%C3%A3o_Bernardo_FC_2020_crest.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t2:'São Bernardo', time:'19:00', tournament:'⚽ Brasileirão Série B' },
+  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Botafogo_Futebol_Clube_%28Ribeir%C3%A3o_Preto%29_logo_%282021%29.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t1:'Botafogo-SP', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ava%C3%AD_Futebol_Clube_logo.svg" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t2:'Avaí', time:'19:00', tournament:'⚽ Brasileirão Série B' }
 ];
 
-/* ── RENDER MATCH CARDS ── */
-const cardsEl = document.getElementById('matchCards');
-matches.forEach((m, i) => {
-  const isLocked = m.locked;
-  const card = document.createElement('div');
-  card.className = `match-card reveal rd${(i % 3) + 1}${isLocked ? ' locked' : ''}`;
-  card.innerHTML = `
-    <div class="match-tournament">
-      ${m.tournament}
-      <span class="match-phase">${m.phase}</span>
+const container = document.getElementById('gamesContainer');
+matches.forEach(m => {
+  const row = document.createElement('div');
+  row.className = 'game-row';
+  row.innerHTML = `
+    <div class="game-meta">
+      <span>${m.tournament}</span>
+      <span class="time">⏱️ Horário: ${m.time}</span>
     </div>
-    <div class="match-teams">
-      <div class="team">
-        <span class="team-flag">${m.f1}</span>
-        <span class="team-name">${m.t1}</span>
-        <span class="team-abbr">${m.a1}</span>
-      </div>
-      <div class="vs-block">
-        <span class="vs-text">VS</span>
-        <span class="match-time">${m.time}</span>
-      </div>
-      <div class="team">
-        <span class="team-flag">${m.f2}</span>
-        <span class="team-name">${m.t2}</span>
-        <span class="team-abbr">${m.a2}</span>
-      </div>
+    <div class="game-teams-wrap">
+      <div class="team-flex"><span class="team-flag">${m.f1}</span> <span>${m.t1}</span></div>
+      <div class="team-flex"><span class="team-flag">${m.f2}</span> <span>${m.t2}</span></div>
     </div>
-    <div class="match-odds">
-      <div class="odd-left">
-        <span class="odd-label">Mercado</span>
-        <span class="odd-market-tag">🎯 ${m.market}</span>
-      </div>
-      <div class="odd-right">
-        <div class="lock-icon">${isLocked ? '🔒' : '✅'}</div>
-        <div>
-          <div class="odd-from">
-            <span class="odd-striked">${m.oddOld}</span>
-          </div>
-          <div class="odd-big${isLocked ? ' gradient-text' : ''}">${m.odd}</div>
-          <div class="odd-big-label">odd atual</div>
-        </div>
-      </div>
-    </div>
-    ${`<div style="margin-top:16px;text-align:center">
-      <a href="https://track.grupojc.cc/track/2b978e7e-ce0e-4a1e-bdb7-5b29d12ac761/redirect?utm_campaign=esp" onclick="fbq('track', 'CompleteRegistration');" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#229ED9,#1A7FC1);color:#fff;font-size:13px;font-weight:800;padding:11px 28px;border-radius:999px;text-decoration:none;letter-spacing:0.5px;box-shadow:0 0 24px rgba(34,158,217,0.4);">
-        🔓 REVELAR ODD NO TELEGRAM
-      </a>
-    </div>`}
+    <a href="https://wa.me/5500000000000?text=Quero%20o%20palpite%20exclusivo%20do%20jogo%20${m.t1}" class="btn-get-odd" onclick="fbq('track', 'Lead');">
+      <span>Pedir Palpite via WhatsApp</span>
+      <span>🔓 Liberar</span>
+    </a>
   `;
-  cardsEl.appendChild(card);
+  container.appendChild(row);
 });
-
-/* ── TICKER ── */
-const tickerData = [
-  { f1:'🇵🇹', t1:'Portugal',       f2:'🇪🇸', t2:'Espanha',         time:'16:00' },
-  { f1:'🇺🇸', t1:'Estados Unidos', f2:'🇧🇪', t2:'Bélgica',          time:'21:00' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Vila_Nova_Logo_Oficial.svg" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">',   t1:'Vila Nova',      f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/88/S%C3%A3o_Bernardo_FC_2020_crest.png" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">',    t2:'São Bernardo FC',  time:'19:00' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Botafogo_Futebol_Clube_%28Ribeir%C3%A3o_Preto%29_logo_%282021%29.png" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">', t1:'Botafogo-SP',    f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ava%C3%AD_Futebol_Clube_logo.svg" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">',           t2:'Avaí',             time:'19:00' },
-];
-const inner = document.getElementById('tickerInner');
-let tickerHTML = '';
-// duplicate 4× for seamless loop
-for (let r = 0; r < 4; r++) {
-  tickerData.forEach(m => {
-    tickerHTML += `
-      <div class="ticker-item">
-        <span class="ticker-flag">${m.f1}</span>
-        <span class="ticker-teams">${m.t1}</span>
-        <span class="ticker-vs">vs</span>
-        <span class="ticker-teams">${m.t2}</span>
-        <span class="ticker-flag">${m.f2}</span>
-        <span class="ticker-time">${m.time}</span>
-      </div><div class="ticker-sep"></div>`;
-  });
-}
-inner.innerHTML = tickerHTML;
-
-inner.addEventListener('mouseenter', () => inner.style.animationPlayState = 'paused');
-inner.addEventListener('mouseleave', () => inner.style.animationPlayState = 'running');
-
-/* ── SCROLL REVEAL ── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ── NAV SHADOW ── */
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.boxShadow =
-    window.scrollY > 40 ? '0 4px 28px rgba(0,0,0,0.7)' : 'none';
-}, { passive: true });
 </script>
 </body>
 </html>
