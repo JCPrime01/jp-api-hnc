@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Odd 100 — Liberação Exclusiva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 <script>
 // Seu Pixel do Facebook Mantido
@@ -238,7 +238,7 @@ h1 em {
 }
 .team-flag { font-size: 20px; line-height: 1; }
 
-/* AJUSTADO: BOTÕES DE JOGO VERDES COM TEXTO BRANCO */
+/* BOTÕES DE JOGO VERDES COM TEXTO BRANCO */
 .btn-get-odd {
   display: flex;
   align-items: center;
@@ -309,7 +309,7 @@ footer {
       A nossa inteligência esportiva mapeou as melhores entradas de hoje com potencial de ODD 100. Toque abaixo para resgatar diretamente no seu celular de forma 100% gratuita.
     </p>
 
-    <!-- LINK DO SEU REDIRECIONADOR ATUALIZADO -->
+    <!-- LINK DO SEU REDIRECIONADOR -->
     <a href="https://p.centralca.cc/" class="btn-whatsapp-main" onclick="fbq('track', 'Lead');">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.415 9.848-9.847.002-2.632-1.019-5.105-2.876-6.964-1.857-1.859-4.331-2.88-6.967-2.881-5.43 0-9.848 4.415-9.851 9.847-.001 1.93.501 3.812 1.457 5.416l-.991 3.613 3.708-.972zm11.724-4.576c-.32-.16-1.891-.932-2.184-1.039-.294-.107-.507-.16-.721.16-.213.32-.826 1.039-1.013 1.253-.187.213-.373.24-.693.08-1.558-.777-2.586-1.325-3.617-3.093-.272-.467.272-.433.778-1.44.08-.16.04-.3-.02-.426-.06-.127-.507-1.226-.693-1.68-.182-.438-.367-.38-.507-.387-.13-.006-.28-.006-.426-.006-.147 0-.387.054-.587.272-.2.213-.76.742-.76 1.81 0 1.067.773 2.098.88 2.246.107.147 1.522 2.323 3.687 3.259.515.223.917.356 1.23.455.518.164.989.141 1.361.085.414-.062 1.891-.773 2.158-1.48.267-.707.267-1.314.187-1.44-.08-.126-.293-.207-.613-.367z"/>
@@ -339,11 +339,10 @@ footer {
 </footer>
 
 <script>
+// NOVOS JOGOS DA COPA DO MUNDO (QUARTAS DE FINAL)
 const matches = [
-  { f1:'🇵🇹', t1:'Portugal', f2:'🇪🇸', t2:'Espanha', time:'16:00', tournament:'🌍 Copa do Mundo FIFA™️' },
-  { f1:'🇺🇸', t1:'Estados Unidos', f2:'🇧🇪', t2:'Bélgica', time:'21:00', tournament:'🌍 Copa do Mundo FIFA™️' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Vila_Nova_Logo_Oficial.svg" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t1:'Vila Nova', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/88/S%C3%A3o_Bernardo_FC_2020_crest.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t2:'São Bernardo', time:'19:00', tournament:'⚽ Brasileirão Série B' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Botafogo_Futebol_Clube_%28Ribeir%C3%A3o_Preto%29_logo_%282021%29.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t1:'Botafogo-SP', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ava%C3%AD_Futebol_Clube_logo.svg" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;">', t2:'Avaí', time:'19:00', tournament:'⚽ Brasileirão Série B' }
+  { f1:'🇳🇴', t1:'Noruega', f2:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', t2:'Inglaterra', time:'Amanhã 18:00', tournament:'🏆 Copa do Mundo — Quartas de final' },
+  { f1:'🇦🇷', t1:'Argentina', f2:'🇨🇭', t2:'Suíça', time:'Amanhã 22:00', tournament:'🏆 Copa do Mundo — Quartas de final' }
 ];
 
 const container = document.getElementById('gamesContainer');
@@ -353,13 +352,12 @@ matches.forEach(m => {
   row.innerHTML = `
     <div class="game-meta">
       <span>${m.tournament}</span>
-      <span class="time">⏱️ Horário: ${m.time}</span>
+      <span class="time">⏱️ ${m.time}</span>
     </div>
     <div class="game-teams-wrap">
       <div class="team-flex"><span class="team-flag">${m.f1}</span> <span>${m.t1}</span></div>
       <div class="team-flex"><span class="team-flag">${m.f2}</span> <span>${m.t2}</span></div>
     </div>
-    <!-- LINK DO SEU REDIRECIONADOR NOS BOTÕES MENORES TAMBÉM -->
     <a href="https://p.centralca.cc/" class="btn-get-odd" onclick="fbq('track', 'Lead');">
       <span>Pedir Palpite via WhatsApp</span>
       <span>🔓 Liberar</span>
