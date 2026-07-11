@@ -56,7 +56,7 @@ body{
   background: radial-gradient(circle, rgba(0, 230, 118, 0.05) 0%, transparent 70%);
 }
 
-/* CONTAINER EM SPLIT (TELA DIVIDIDA NO PC, APP NO CELULAR) */
+/* CONTAINER EM SPLIT */
 .split-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -175,7 +175,7 @@ h1 em {
   border: 1px solid var(--border-light); border-radius: 6px; color: var(--green-whatsapp);
 }
 
-/* LADO DIREITO: GRID DE JOGOS (ESTILO APP DE APOSTAS) */
+/* LADO DIREITO: GRID DE JOGOS */
 .right-side {
   display: flex;
   flex-direction: column;
@@ -238,27 +238,29 @@ h1 em {
 }
 .team-flag { font-size: 20px; line-height: 1; }
 
+/* AJUSTADO: BOTÕES DE JOGO VERDES COM TEXTO BRANCO */
 .btn-get-odd {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border-light);
-  color: var(--white);
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 12px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 13px;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
 }
 .btn-get-odd:hover {
-  background: rgba(0, 230, 118, 0.1);
-  border-color: var(--green-whatsapp);
-  color: var(--green-whatsapp);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  filter: brightness(1.1);
 }
 
-/* FOOTER SIMPLES */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
@@ -274,28 +276,12 @@ footer {
   50% { opacity: 0.4; transform: scale(1.1); }
 }
 
-/* RESPONSIVIDADE (A MÁGICA ACONTECE AQUI) */
+/* RESPONSIVIDADE */
 @media (max-width: 1024px) {
-  .split-layout {
-    grid-template-columns: 1fr;
-  }
-  .left-side {
-    padding: 40px 20px 20px 20px;
-    text-align: center;
-    align-items: center;
-  }
-  .right-side {
-    padding: 20px;
-    border-left: none;
-    background: transparent;
-    backdrop-filter: none;
-  }
-  .features-grid {
-    margin-top: 32px;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    text-align: left;
-  }
+  .split-layout { grid-template-columns: 1fr; }
+  .left-side { padding: 40px 20px 20px 20px; text-align: center; align-items: center; }
+  .right-side { padding: 20px; border-left: none; background: transparent; backdrop-filter: none; }
+  .features-grid { margin-top: 32px; grid-template-columns: 1fr; gap: 12px; text-align: left; }
   .brand { margin-bottom: 24px; }
 }
 </style>
@@ -309,7 +295,7 @@ footer {
 
 <main class="split-layout">
   
-  <!-- LADO ESQUERDO: CONVERSÃO COMPLETA -->
+  <!-- LADO ESQUERDO -->
   <section class="left-side">
     <div class="brand">ODD<span>100</span></div>
     
@@ -323,8 +309,8 @@ footer {
       A nossa inteligência esportiva mapeou as melhores entradas de hoje com potencial de ODD 100. Toque abaixo para resgatar diretamente no seu celular de forma 100% gratuita.
     </p>
 
-    <!-- Substitua pelo seu link do WhatsApp -->
-    <a href="https://wa.me/5500000000000?text=Quero%20receber%20o%20bilhete%20premiado%20de%20hoje" class="btn-whatsapp-main" onclick="fbq('track', 'Lead');">
+    <!-- LINK DO SEU REDIRECIONADOR ATUALIZADO -->
+    <a href="https://p.centralca.cc/" class="btn-whatsapp-main" onclick="fbq('track', 'Lead');">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.415 9.848-9.847.002-2.632-1.019-5.105-2.876-6.964-1.857-1.859-4.331-2.88-6.967-2.881-5.43 0-9.848 4.415-9.851 9.847-.001 1.93.501 3.812 1.457 5.416l-.991 3.613 3.708-.972zm11.724-4.576c-.32-.16-1.891-.932-2.184-1.039-.294-.107-.507-.16-.721.16-.213.32-.826 1.039-1.013 1.253-.187.213-.373.24-.693.08-1.558-.777-2.586-1.325-3.617-3.093-.272-.467.272-.433.778-1.44.08-.16.04-.3-.02-.426-.06-.127-.507-1.226-.693-1.68-.182-.438-.367-.38-.507-.387-.13-.006-.28-.006-.426-.006-.147 0-.387.054-.587.272-.2.213-.76.742-.76 1.81 0 1.067.773 2.098.88 2.246.107.147 1.522 2.323 3.687 3.259.515.223.917.356 1.23.455.518.164.989.141 1.361.085.414-.062 1.891-.773 2.158-1.48.267-.707.267-1.314.187-1.44-.08-.126-.293-.207-.613-.367z"/>
       </svg>
@@ -339,7 +325,7 @@ footer {
     </div>
   </section>
 
-  <!-- LADO DIREITO: GRADE DE JOGOS PREMIUM -->
+  <!-- LADO DIREITO -->
   <section class="right-side">
     <h2 class="section-right-title">Análises Disponíveis no Zap</h2>
     <div class="games-container" id="gamesContainer"></div>
@@ -353,7 +339,6 @@ footer {
 </footer>
 
 <script>
-// Dados mantidos da sua estrutura original de partidas
 const matches = [
   { f1:'🇵🇹', t1:'Portugal', f2:'🇪🇸', t2:'Espanha', time:'16:00', tournament:'🌍 Copa do Mundo FIFA™️' },
   { f1:'🇺🇸', t1:'Estados Unidos', f2:'🇧🇪', t2:'Bélgica', time:'21:00', tournament:'🌍 Copa do Mundo FIFA™️' },
@@ -374,7 +359,8 @@ matches.forEach(m => {
       <div class="team-flex"><span class="team-flag">${m.f1}</span> <span>${m.t1}</span></div>
       <div class="team-flex"><span class="team-flag">${m.f2}</span> <span>${m.t2}</span></div>
     </div>
-    <a href="https://wa.me/5500000000000?text=Quero%20o%20palpite%20exclusivo%20do%20jogo%20${m.t1}" class="btn-get-odd" onclick="fbq('track', 'Lead');">
+    <!-- LINK DO SEU REDIRECIONADOR NOS BOTÕES MENORES TAMBÉM -->
+    <a href="https://p.centralca.cc/" class="btn-get-odd" onclick="fbq('track', 'Lead');">
       <span>Pedir Palpite via WhatsApp</span>
       <span>🔓 Liberar</span>
     </a>
