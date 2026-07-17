@@ -1,372 +1,242 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Odd 100 — Liberação Exclusiva</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
-<script>
-// Seu Pixel do Facebook Mantido
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '953058917590545');
-fbq('track', 'PageView');
-</script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg-main: #020617;
-  --bg-card: rgba(15, 23, 42, 0.4);
-  --green-whatsapp: #00E676;
-  --green-glow: rgba(0, 230, 118, 0.15);
-  --accent-blue: #38bdf8;
-  --white: #f8fafc;
-  --gray-text: #94a3b8;
-  --border-light: rgba(255, 255, 255, 0.05);
-}
+<!DOCTYPE html>                                                                                                                                                                                           
+  <html lang="pt-br">                                                                                                                                                                                       
+  <head>                                                                                                                                                                                                    
+      <meta charset="UTF-8">              
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">                                                                                           
+      <title>Comunidade do Jota - Jogos do Dia</title>                                                                                                                                                      
+                                                                                                                                                                                                            
+      <style>                                                                                                                                                                                               
+          @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,900;1,900&display=swap');                                                                                               
+                                                                                                                                                                                                            
+          :root {                         
+              --primary: #00ff88;                                                                                                                                                                           
+              --bg: #020202;                                                                                                                                                                                
+          }                                   
+                                                                                                                                                                                                            
+          * { margin: 0; padding: 0; box-sizing: border-box; }                                                                                                                                            
+                                                                                                                                                                                                            
+          body {
+              background-color: var(--bg);                                                                                                                                                                  
+              color: #fff;                                                                                                                                                                                
+              overflow-x: hidden;         
+              min-height: 100vh;
+              font-family: 'Arial', sans-serif;                                                                                                                                                             
+          }
+                                                                                                                                                                                                            
+          .bg-lines {                                                                                                                                                                                     
+              position: fixed;            
+              inset: 0;
+              z-index: 0;                                                                                                                                                                                   
+              background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+              background-size: 10% 100%;                                                                                                                                                                    
+              pointer-events: none;                                                                                                                                                                       
+          }
+                                                                                                                                                                                                            
+          .bg-lines::after {
+              content: "";                                                                                                                                                                                  
+              position: absolute;                                                                                                                                                                         
+              top: -100%; left: 0; width: 100%; height: 100%;
+              background: linear-gradient(to bottom, transparent, rgba(0, 255, 136, 0.1), transparent);
+              animation: moveLines 6s linear infinite;
+          }                               
+                                                                                                                                                                                                            
+          @keyframes moveLines {                                                                                                                                                                            
+              0% { transform: translateY(0%); }                                                                                                                                                             
+              100% { transform: translateY(200%); }                                                                                                                                                         
+          }                                                                                                                                                                                                 
+   
+          .lp-wrapper {                                                                                                                                                                                     
+              position: relative;                                                                                                                                                                         
+              z-index: 10;
+              width: 100%;                                                                                                                                                                                  
+              min-height: 100vh;
+              display: flex;                                                                                                                                                                                
+              flex-direction: column;                                                                                                                                                                     
+              justify-content: space-between;
+              padding: 40px 0;                                                                                                                                                                              
+              background:                     
+                  radial-gradient(circle at center, rgba(2, 2, 2, 0.4) 0%, var(--bg) 95%),                                                                                                                  
+                  url('jp-direto.jpg') center/cover no-repeat fixed;                                                                                                                                      
+          }                                                                                                                                                                                                 
+                                          
+          .header-section { width: 100%; text-align: center; }                                                                                                                                              
+                                                                                                                                                                                                            
+          .section-label {                                                                                                                                                                                  
+              font-size: 12px;                                                                                                                                                                              
+              text-transform: uppercase;                                                                                                                                                                  
+              color: var(--primary);                                                                                                                                                                        
+              letter-spacing: 4px;                                                                                                                                                                        
+              margin-bottom: 15px;        
+              font-weight: bold;
+          }                                                                                                                                                                                                 
+   
+          .carousel-container { display: flex; width: 100%; overflow: hidden; padding: 10px 0; }                                                                                                            
+          .carousel-track { display: flex; gap: 20px; animation: scroll 25s linear infinite; padding-left: 20px; }                                                                                        
+                                              
+          @keyframes scroll {                                                                                                                                                                               
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }                                                                                                                                                         
+          }                                                                                                                                                                                               
+                                                                                                                                                                                                            
+          .game-card {                                                                                                                                                                                    
+              background: rgba(255, 255, 255, 0.03);
+              backdrop-filter: blur(15px);
+              -webkit-backdrop-filter: blur(15px);                                                                                                                                                          
+              min-width: 260px;
+              padding: 20px;                                                                                                                                                                                
+              border-radius: 24px;                                                                                                                                                                        
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              text-align: center;                                                                                                                                                                           
+          }                                   
+                                                                                                                                                                                                            
+          .teams-row { display: flex; align-items: center; justify-content: space-around; gap: 10px; }                                                                                                    
+          .team img { width: 45px; height: 45px; object-fit: contain; }                                                                                                                                     
+          .vs { font-weight: 900; color: var(--primary); font-size: 18px; }
+                                                                                                                                                                                                            
+          .headline {                                                                                                                                                                                     
+              font-family: 'Kanit', sans-serif;                                                                                                                                                             
+              font-size: clamp(32px, 10vw, 48px);                                                                                                                                                           
+              font-weight: 900;                                                                                                                                                                             
+              font-style: italic;                                                                                                                                                                           
+              text-transform: uppercase;                                                                                                                                                                  
+              margin: 40px 0;                                                                                                                                                                               
+              line-height: 1.1;
+              padding: 0 20px;                                                                                                                                                                              
+              text-shadow: 0 4px 15px rgba(0,0,0,0.8);                                                                                                                                                    
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+          .footer-section { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+                                                                                                                                                                                                            
+          .btn-container { width: 100%; max-width: 380px; margin-bottom: 15px; animation: pulse 2s infinite ease-in-out; }                                                                                
+                                                                                                                                                                                                            
+          @keyframes pulse {                                                                                                                                                                              
+              0%, 100% { transform: scale(1); }                                                                                                                                                             
+              50% { transform: scale(1.03); }                                                                                                                                                             
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                          
+          .btn-border-beam {
+              position: relative; padding: 2px; border-radius: 18px; overflow: hidden; display: block; text-decoration: none;                                                                               
+              box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                          
+          .btn-border-beam::before {                                                                                                                                                                        
+              content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;                                                                                                            
+              background: conic-gradient(transparent, transparent, var(--primary), transparent);                                                                                                            
+              animation: rotate 3s linear infinite;                                                                                                                                                         
+          }                                                                                                                                                                                               
+                                                                                                                                                                                                            
+          @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                                                                                                                                                                                                            
+          .btn-content {                                                                                                                                                                                  
+              position: relative; background: #0a0a0a; color: #fff; padding: 22px; border-radius: 16px;                                                                                                     
+              font-size: 18px; font-weight: 900; text-transform: uppercase; display: block; z-index: 5; text-align: center;                                                                               
+          }                                                                                                                                                                                                 
+                                          
+          .alert-box {                                                                                                                                                                                      
+              width: 100%;                                                                                                                                                                                  
+              max-width: 380px;                                                                                                                                                                             
+              background: rgba(255, 255, 255, 0.05);                                                                                                                                                        
+              border: 1px solid rgba(255, 255, 255, 0.1);                                                                                                                                                 
+              border-radius: 12px;
+              padding: 15px;                                                                                                                                                                                
+              margin-bottom: 5px;         
+              backdrop-filter: blur(10px);                                                                                                                                                                  
+          }                                                                                                                                                                                                 
+   
+          .alert-box p { font-size: 13px; color: #fff; line-height: 1.4; text-align: center; }                                                                                                              
+          .alert-box span { color: #ff8800; font-weight: bold; }                                                                                                                                          
+                                              
+          .disclaimer {                                                                                                                                                                                     
+              width: 100%;
+              max-width: 380px;                                                                                                                                                                             
+              margin-top: 20px;                                                                                                                                                                           
+              padding: 14px;                                                                                                                                                                                
+              background: rgba(255,255,255,0.03);                                                                                                                                                           
+              border: 1px solid rgba(255,255,255,0.07);
+              border-radius: 12px;                                                                                                                                                                          
+              text-align: center;                                                                                                                                                                         
+          }                                                                                                                                                                                                 
+   
+          .disclaimer p {                                                                                                                                                                                   
+              font-size: 11px;                                                                                                                                                                            
+              color: #888;
+              line-height: 1.6;                                                                                                                                                                             
+          }
+                                                                                                                                                                                                            
+          .disclaimer .age-badge {                                                                                                                                                                        
+              display: inline-block;      
+              background: #ff0000;
+              color: #fff;                                                                                                                                                                                  
+              font-size: 12px;
+              font-weight: 900;                                                                                                                                                                             
+              padding: 3px 10px;                                                                                                                                                                          
+              border-radius: 6px;         
+              margin-bottom: 8px;
+              letter-spacing: 1px;                                                                                                                                                                          
+          }                                   
+      </style>                                                                                                                                                                                              
+  </head>                                                                                                                                                                                                 
+  <body>                                                                                                                                                                                                    
+   
+      <div class="bg-lines"></div>                                                                                                                                                                          
+                                                                                                                                                                                                          
+      <div class="lp-wrapper">                
+                                          
+          <div class="header-section">
+              <p class="section-label">Jogos do Dia</p>                                                                                                                                                     
+   
+              <div class="carousel-container">                                                                                                                                                              
+                  <div class="carousel-track">                                                                                                                                                            
+                      <div class="game-card">
+                          <div class="teams-row">
+                              <div class="team"><img src="Mirassol-SP HD.png" alt=""><span>Athletico</span></div>
+                              <div class="vs">VS</div>
+                              <div class="team"><img src="https://crests.football-data.org/1770.png" alt=""><span>Botafogo</span></div>
+                          </div>                                                                                                                                                                            
+                      </div>              
+                      <div class="game-card">                                                                                                                                                               
+                          <div class="teams-row">                                                                                                                                                           
+                              <div class="team"><img src="Internacional.png" alt=""><span>Inter</span></div>
+                              <div class="vs">VS</div>                                                                                                                                                      
+                              <div class="team"><img src="https://crests.football-data.org/1776.png" alt=""><span>São Paulo</span></div>                                                                  
+                          </div>                                                                                                                                                                            
+                      </div>              
+                      <div class="game-card">                                                                                                                                                               
+                          <div class="teams-row">                                                                                                                                                           
+                              <div class="team"><img src="Mirassol-SP HD.png" alt=""><span>Athletico</span></div>
+                              <div class="vs">VS</div>                                                                                                                                                      
+                              <div class="team"><img src="https://crests.football-data.org/1770.png" alt=""><span>Botafogo</span></div>                                                                   
+                          </div>                                                                                                                                                                            
+                      </div>              
+                  </div>                                                                                                                                                                                    
+              </div>                                                                                                                                                                                        
+   
+              <h1 class="headline">BILHETE<br><span style="color: var(--primary)">LIBERADO</span></h1>                                                                                                      
+          </div>                                                                                                                                                                                          
 
-body{
-  background-color: var(--bg-main);
-  color: var(--white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-
-/* Background dinâmico com luzes neon de estádio */
-.bg-glows {
-  position: fixed; inset: 0; z-index: -1; pointer-events: none;
-}
-.glow-1 {
-  position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
-}
-.glow-2 {
-  position: absolute; bottom: -10%; right: -10%; width: 60vw; height: 60vw;
-  background: radial-gradient(circle, rgba(0, 230, 118, 0.05) 0%, transparent 70%);
-}
-
-/* CONTAINER EM SPLIT */
-.split-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* LADO ESQUERDO: COPY PRINCIPAL */
-.left-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px;
-  z-index: 2;
-}
-
-.brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.brand span { color: var(--green-whatsapp); }
-
-.badge-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 230, 118, 0.1);
-  border: 1px solid rgba(0, 230, 118, 0.2);
-  color: var(--green-whatsapp);
-  padding: 6px 14px;
-  border-radius: 99px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: fit-content;
-  margin-bottom: 24px;
-}
-.badge-live .dot {
-  width: 6px; height: 6px; background: var(--green-whatsapp);
-  border-radius: 50%; animation: pulseBlink 1.5s infinite;
-}
-
-h1 {
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
-  margin-bottom: 20px;
-}
-h1 em {
-  font-style: normal;
-  background: linear-gradient(135deg, #fff 0%, var(--green-whatsapp) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-  color: var(--gray-text);
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 520px;
-  margin-bottom: 40px;
-}
-
-/* BOTÃO WHATSAPP ULTRA MODERNO */
-.btn-whatsapp-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: var(--green-whatsapp);
-  color: #020617;
-  font-size: 16px;
-  font-weight: 800;
-  text-decoration: none;
-  padding: 20px 40px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 10px 30px var(--green-glow);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.btn-whatsapp-main:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0, 230, 118, 0.35);
-}
-.btn-whatsapp-main svg { width: 24px; height: 24px; fill: currentColor; }
-
-/* MINI BENEFÍCIOS GRID */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 48px;
-  max-width: 500px;
-}
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--gray-text);
-}
-.feature-item icon {
-  display: flex; align-items: center; justify-content: center;
-  width: 24px; height: 24px; background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border-light); border-radius: 6px; color: var(--green-whatsapp);
-}
-
-/* LADO DIREITO: GRID DE JOGOS */
-.right-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px;
-  background: rgba(255, 255, 255, 0.01);
-  border-left: 1px solid var(--border-light);
-  backdrop-filter: blur(10px);
-}
-
-.section-right-title {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent-blue);
-  margin-bottom: 24px;
-}
-
-.games-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.game-row {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 16px;
-  padding: 20px;
-  transition: all 0.2s ease;
-}
-.game-row:hover {
-  border-color: rgba(56, 189, 248, 0.2);
-  background: rgba(15, 23, 42, 0.6);
-}
-
-.game-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--gray-text);
-  margin-bottom: 14px;
-  font-weight: 600;
-}
-.game-meta .time { color: var(--accent-blue); }
-
-.game-teams-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-.team-flex {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 700;
-}
-.team-flag { font-size: 20px; line-height: 1; }
-
-/* BOTÕES DE JOGO VERDES COM TEXTO BRANCO */
-.btn-get-odd {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 14px 18px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
-}
-.btn-get-odd:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-  filter: brightness(1.1);
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 11px;
-  color: rgba(148, 163, 184, 0.4);
-  border-top: 1px solid var(--border-light);
-  margin-top: auto;
-}
-
-/* ANIMATION */
-@keyframes pulseBlink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.1); }
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 1024px) {
-  .split-layout { grid-template-columns: 1fr; }
-  .left-side { padding: 40px 20px 20px 20px; text-align: center; align-items: center; }
-  .right-side { padding: 20px; border-left: none; background: transparent; backdrop-filter: none; }
-  .features-grid { margin-top: 32px; grid-template-columns: 1fr; gap: 12px; text-align: left; }
-  .brand { margin-bottom: 24px; }
-}
-</style>
-</head>
-<body>
-
-<div class="bg-glows">
-  <div class="glow-1"></div>
-  <div class="glow-2"></div>
-</div>
-
-<main class="split-layout">
-  
-  <!-- LADO ESQUERDO -->
-  <section class="left-side">
-    <div class="brand">ODD<span>100</span></div>
-    
-    <div class="badge-live">
-      <span class="dot"></span> Liberando Palpites Agora
-    </div>
-
-    <h1>Seu acesso exclusivo foi enviado ao <em>WhatsApp</em></h1>
-    
-    <p class="subtitle">
-      A nossa inteligência esportiva mapeou as melhores entradas de hoje com potencial de ODD 100. Toque abaixo para resgatar diretamente no seu celular de forma 100% gratuita.
-    </p>
-
-    <!-- LINK DO SEU REDIRECIONADOR -->
-    <a href="https://pe.hublab.uk/" class="btn-whatsapp-main" onclick="fbq('track', 'Lead');">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.415 9.848-9.847.002-2.632-1.019-5.105-2.876-6.964-1.857-1.859-4.331-2.88-6.967-2.881-5.43 0-9.848 4.415-9.851 9.847-.001 1.93.501 3.812 1.457 5.416l-.991 3.613 3.708-.972zm11.724-4.576c-.32-.16-1.891-.932-2.184-1.039-.294-.107-.507-.16-.721.16-.213.32-.826 1.039-1.013 1.253-.187.213-.373.24-.693.08-1.558-.777-2.586-1.325-3.617-3.093-.272-.467.272-.433.778-1.44.08-.16.04-.3-.02-.426-.06-.127-.507-1.226-.693-1.68-.182-.438-.367-.38-.507-.387-.13-.006-.28-.006-.426-.006-.147 0-.387.054-.587.272-.2.213-.76.742-.76 1.81 0 1.067.773 2.098.88 2.246.107.147 1.522 2.323 3.687 3.259.515.223.917.356 1.23.455.518.164.989.141 1.361.085.414-.062 1.891-.773 2.158-1.48.267-.707.267-1.314.187-1.44-.08-.126-.293-.207-.613-.367z"/>
-      </svg>
-      Resgatar Bilhete Grátis
-    </a>
-
-    <div class="features-grid">
-      <div class="feature-item"><icon>✓</icon> Zero taxas ou assinaturas ocultas</div>
-      <div class="feature-item"><icon>✓</icon> Robô de análise atualizado há 4 minutos</div>
-      <div class="feature-item"><icon>✓</icon> Palpites direto no seu WhatsApp</div>
-      <div class="feature-item"><icon>✓</icon> Mais de 4.800 pessoas já lucrando</div>
-    </div>
-  </section>
-
-  <!-- LADO DIREITO -->
-  <section class="right-side">
-    <h2 class="section-right-title">Análises Disponíveis no Zap</h2>
-    <div class="games-container" id="gamesContainer"></div>
-  </section>
-
-</main>
-
-<footer>
-  <p style="margin-bottom: 6px;"><strong>+18 | Jogue com Responsabilidade</strong></p>
-  <p>Os prognósticos disponibilizados via WhatsApp são baseados em estatísticas matemáticas e probabilidades. Resultados passados não garantem lucros futuros.</p>
-</footer>
-
-<script>
-// NOVOS JOGOS DA COPA DO MUNDO (QUARTAS DE FINAL)
-const matches = [
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Esporte_Clube_Vit%C3%B3ria_logo.svg/250px-Esporte_Clube_Vit%C3%B3ria_logo.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t1:'Vitória', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Vasco_da_Gama.svg/250px-Vasco_da_Gama.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t2:'Vasco da Gama', time:'19:30', tournament:'🇧🇷 Brasileirão Série A — Rodada 19' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Botafogo_de_Futebol_e_Regatas_logo.svg/250px-Botafogo_de_Futebol_e_Regatas_logo.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t1:'Botafogo', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.svg/250px-Santos_Logo.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t2:'Santos', time:'19:30', tournament:'🇧🇷 Brasileirão Série A — Rodada 19' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ferencv%C3%A1rosi_TC_%28crest%29.svg/250px-Ferencv%C3%A1rosi_TC_%28crest%29.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t1:'Ferencvarosi TC', f2:'<img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/FK_Vojvodina.svg/250px-FK_Vojvodina.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t2:'FK Vojvodina', time:'15:15', tournament:'🏆 UEFA Liga Europa — Rodada 2 volta' },
-  { f1:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/IF_Vestri.png/250px-IF_Vestri.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t1:'IF Vestri', f2:'<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Qarabag_FK.svg/250px-Qarabag_FK.svg.png" style="width:32px;height:32px;object-fit:contain;vertical-align:middle;">', t2:'Qarabag FK', time:'17:00', tournament:'🏆 UEFA Liga Europa — Rodada 2 volta' },
-];
-
-const container = document.getElementById('gamesContainer');
-matches.forEach(m => {
-  const row = document.createElement('div');
-  row.className = 'game-row';
-  row.innerHTML = `
-    <div class="game-meta">
-      <span>${m.tournament}</span>
-      <span class="time">⏱️ ${m.time}</span>
-    </div>
-    <div class="game-teams-wrap">
-      <div class="team-flex"><span class="team-flag">${m.f1}</span> <span>${m.t1}</span></div>
-      <div class="team-flex"><span class="team-flag">${m.f2}</span> <span>${m.t2}</span></div>
-    </div>
-    <a href="https://pe.hublab.uk/" class="btn-get-odd" onclick="fbq('track', 'Lead');">
-      <span>Pedir Palpite via WhatsApp</span>
-      <span>🔓 Liberar</span>
-    </a>
-  `;
-  container.appendChild(row);
-});
-</script>
-</body>
-</html>
+          <div class="footer-section">                                                                                                                                                                      
+              <div class="alert-box">
+                  <p><span>*</span> Entre na comunidade para receber a análise e o bilhete dos jogos do dia!</p>                                                                                         
+              </div>                                                                                                                                                                                      
+                                          
+              <div class="btn-container">
+                  <a href="https://pe.hublab.uk/" class="btn-border-beam">                                                                                                                    
+                      <span class="btn-content">🔥 ENTRAR NA COMUNIDADE</span>
+                  </a>                                                                                                                                                                                      
+              </div>                                                                                                                                                                                      
+                                                                                                                                                                                                            
+              <div class="disclaimer">
+                  <div class="age-badge">🔞 +18</div>                                                                                                                                                       
+                  <p>                                                                                                                                                                                     
+                      Proibido para menores de 18 anos.<br>
+                      Apostas envolvem risco de perda de dinheiro.<br>
+                      Apostas não são investimento.<br>                                                                                                                                                     
+                      Jogue com responsabilidade.
+                  </p>                                                                                                                                                                                      
+              </div>                                                                                                                                                                                      
+          </div>                                                                                                                                                                                            
+   
+      </div>                                                                                                                                                                                                
+                                                                                                                                                                                                          
+  </body>
+  </html>
