@@ -116,19 +116,19 @@
 
           .btn-border-beam {
               position: relative; padding: 2px; border-radius: 18px; overflow: hidden; display: block; text-decoration: none;
-              box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+              box-shadow: 0 0 20px rgba(0, 136, 204, 0.5);
           }
 
           .btn-border-beam::before {
               content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-              background: conic-gradient(transparent, transparent, var(--primary), transparent);
+              background: conic-gradient(transparent, transparent, #0088cc, transparent);
               animation: rotate 3s linear infinite;
           }
 
           @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
           .btn-content {
-              position: relative; background: #0a0a0a; color: #fff; padding: 22px; border-radius: 16px;
+              position: relative; background: #0088cc; color: #fff; padding: 22px; border-radius: 16px;
               font-size: 18px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; justify-content: center; z-index: 5; text-align: center;
           }
 
@@ -148,7 +148,7 @@
 
           .bateubet-footer {
               width: 100%;
-              margin-top: 20px;
+              margin-top: 6px;
               display: block;
           }
       </style>
