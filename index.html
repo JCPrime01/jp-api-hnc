@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidade do Jota</title>
 
-    <!-- META PIXEL -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,7 +30,7 @@
         html, body {
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mantém sem scroll */
+            overflow: hidden;
         }
 
         body {
@@ -45,42 +44,41 @@
         .container {
             width: 100%;
             max-width: 450px;
-            height: 100dvh; /* Altura exata do celular */
-            padding: 10px 0 0 0; /* Tiramos o padding das laterais pro selo encostar nas bordas */
-            text-align: center;
+            height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            padding-top: 15px;
         }
 
-        /* CONTEÚDO PRINCIPAL (DENTRO DAS BORDAS) */
         .content-wrapper {
             width: 100%;
-            padding: 0 15px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: space-around;
             flex: 1;
         }
 
         .header-box {
             border: 1px solid #4ade80;
             border-radius: 50px;
-            padding: 8px 18px;
+            padding: 12px 20px;
             width: 100%;
             background: linear-gradient(180deg, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 100%);
+            text-align: center;
         }
 
-        .header-box h2 { font-size: 1.25rem; font-weight: bold; }
+        .header-box h2 { font-size: 1.4rem; font-weight: bold; }
         .header-box span { color: #4ade80; font-style: italic; }
-        .header-box p { font-size: 0.8rem; margin-top: 2px; opacity: 0.9; }
+        .header-box p { font-size: 0.85rem; margin-top: 2px; opacity: 0.9; }
 
+        /* FOTO DO ZECA GRANDE */
         .image-wrapper {
             position: relative;
-            width: 210px;
-            margin: 2px 0;
+            width: 260px;
         }
 
         .image-wrapper img { width: 100%; display: block; z-index: 10; position: relative; }
@@ -91,19 +89,19 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 130px;
-            height: 130px;
+            width: 160px;
+            height: 160px;
             background: #4ade80;
-            filter: blur(70px);
-            opacity: 0.35;
+            filter: blur(80px);
+            opacity: 0.4;
             z-index: 1;
         }
 
         .main-title {
-            font-size: 1.15rem; 
+            font-size: 1.25rem; 
             line-height: 1.2;
             font-weight: bold;
-            margin: 2px 0;
+            text-align: center;
         }
 
         .highlight-green {
@@ -114,39 +112,38 @@
         .alert-box {
             background-color: rgba(10, 30, 15, 0.8);
             border-radius: 12px;
-            padding: 8px 12px;
+            padding: 10px 15px;
             width: 100%;
             border: 1px solid rgba(74, 222, 128, 0.2);
-            margin: 2px 0;
+            text-align: center;
         }
 
         .alert-box .warning-text {
             color: #4ade80;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
             display: block;
             margin-bottom: 2px;
         }
 
         .alert-box p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #ccc;
         }
 
-        /* BOTÃO CTA COM ANIMAÇÃO */
         .cta-button {
             background-color: #4ade80;
             color: #000 !important;
             text-decoration: none;
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             border-radius: 12px;
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
             display: inline-block;
-            transition: 0.3s;
+            text-align: center;
             animation: pulse 1.5s infinite;
         }
 
@@ -156,7 +153,7 @@
             100% { transform: scale(1); }
         }
 
-        /* SELO POR EXTENSO NO RODAPÉ */
+        /* SELO POR EXTENSO DE PONTA A PONTA */
         .stamp-bottom {
             width: 100%;
             display: block;
@@ -195,8 +192,8 @@
             </a>
         </div>
 
-        <!-- SELO EXTENSO NO FIM DA LP -->
-        <img src="BATEUBET.png" alt="Selo Bateubet / Ministério da Fazenda" class="stamp-bottom">
+        <!-- SELO BATEUBET / MINISTÉRIO DA FAZENDA NO RODAPÉ -->
+        <img src="ESPORTIVA.png" alt="Selo Bateubet" class="stamp-bottom">
 
     </div>
 
