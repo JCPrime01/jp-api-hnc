@@ -1,174 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Comunidade do Jota - Jogos do Dia</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,900;1,900&display=swap');
-    :root { --primary: #00ff88; --bg: #020202; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background-color: var(--bg); color: #fff; overflow-x: hidden; min-height: 100vh; font-family: Arial, sans-serif; }
-    .bg-lines {
-      position: fixed; inset: 0; z-index: 0;
-      background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 10% 100%; pointer-events: none;
-    }
-    .bg-lines::after {
-      content: ""; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(0,255,136,0.1), transparent);
-      animation: moveLines 6s linear infinite;
-    }
-    @keyframes moveLines { 0% { transform: translateY(0%); } 100% { transform: translateY(200%); } }
-    .lp-wrapper {
-      position: relative; z-index: 10; width: 100%; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: 20px 0;
-      background:
-        radial-gradient(circle at center, rgba(2,2,2,0.4) 0%, var(--bg) 95%),
-        url('https://raw.githubusercontent.com/JCPrime01/jp-api-hnc/main/jp-direto.jpg') center/cover no-repeat;
-    }
-    .header-section { width: 100%; text-align: center; }
-    .section-label {
-      font-size: 12px; text-transform: uppercase; color: var(--primary);
-      letter-spacing: 4px; margin-bottom: 15px; font-weight: bold;
-    }
-    .carousel-container { display: flex; width: 100%; overflow: hidden; padding: 10px 0; }
-    .carousel-track { display: flex; gap: 20px; animation: scroll 30s linear infinite; padding-left: 20px; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .game-card {
-      background: rgba(255,255,255,0.03); backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px); min-width: 220px; padding: 16px;
-      border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); text-align: center; flex-shrink: 0;
-    }
-    .teams-row { display: flex; align-items: center; justify-content: space-around; gap: 8px; }
-    .team { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .team img { width: 40px; height: 40px; object-fit: contain; }
-    .team span { font-size: 11px; color: #ccc; }
-    .vs { font-weight: 900; color: var(--primary); font-size: 16px; }
-    .headline {
-      font-family: 'Kanit', sans-serif; font-size: clamp(32px, 10vw, 48px);
-      font-weight: 900; font-style: italic; text-transform: uppercase;
-      margin: 20px 0; line-height: 1.1; padding: 0 20px;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-    }
-    .footer-section { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
-    .alert-box {
-      width: 100%; max-width: 380px; background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
-      padding: 12px 15px; margin-bottom: 10px; backdrop-filter: blur(10px);
-    }
-    .alert-box p { font-size: 13px; color: #fff; line-height: 1.4; text-align: center; }
-    .btn-container { width: 100%; max-width: 380px; margin-bottom: 10px; animation: pulse 2s infinite ease-in-out; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
-    .btn-border-beam {
-      position: relative; padding: 2px; border-radius: 18px; overflow: hidden;
-      display: block; text-decoration: none; box-shadow: 0 0 20px rgba(0,136,204,0.5);
-    }
-    .btn-border-beam::before {
-      content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: conic-gradient(transparent, transparent, #0088cc, transparent);
-      animation: rotate 3s linear infinite;
-    }
-    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .btn-content {
-      position: relative; background: #0088cc; color: #fff; padding: 20px; border-radius: 16px;
-      font-size: 18px; font-weight: 900; text-transform: uppercase;
-      display: flex; align-items: center; justify-content: center; z-index: 5;
-    }
-    .bateubet-footer { width: 100%; display: block; margin-top: 10px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade do Jota</title>
+
+    <!-- META PIXEL -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1251810006927464');
+    fbq('track', 'PageView');
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Mantém sem scroll */
+        }
+
+        body {
+            background-color: #020d04;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            height: 100dvh; /* Altura exata do celular */
+            padding: 10px 0 0 0; /* Tiramos o padding das laterais pro selo encostar nas bordas */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* CONTEÚDO PRINCIPAL (DENTRO DAS BORDAS) */
+        .content-wrapper {
+            width: 100%;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .header-box {
+            border: 1px solid #4ade80;
+            border-radius: 50px;
+            padding: 8px 18px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .header-box h2 { font-size: 1.25rem; font-weight: bold; }
+        .header-box span { color: #4ade80; font-style: italic; }
+        .header-box p { font-size: 0.8rem; margin-top: 2px; opacity: 0.9; }
+
+        .image-wrapper {
+            position: relative;
+            width: 210px;
+            margin: 2px 0;
+        }
+
+        .image-wrapper img { width: 100%; display: block; z-index: 10; position: relative; }
+
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 130px;
+            background: #4ade80;
+            filter: blur(70px);
+            opacity: 0.35;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 1.15rem; 
+            line-height: 1.2;
+            font-weight: bold;
+            margin: 2px 0;
+        }
+
+        .highlight-green {
+            color: #4ade80;
+            font-weight: 800;
+        }
+
+        .alert-box {
+            background-color: rgba(10, 30, 15, 0.8);
+            border-radius: 12px;
+            padding: 8px 12px;
+            width: 100%;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            margin: 2px 0;
+        }
+
+        .alert-box .warning-text {
+            color: #4ade80;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .alert-box p {
+            font-size: 0.75rem;
+            color: #ccc;
+        }
+
+        /* BOTÃO CTA COM ANIMAÇÃO */
+        .cta-button {
+            background-color: #4ade80;
+            color: #000 !important;
+            text-decoration: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+            display: inline-block;
+            transition: 0.3s;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { transform: scale(1); }
+        }
+
+        /* SELO POR EXTENSO NO RODAPÉ */
+        .stamp-bottom {
+            width: 100%;
+            display: block;
+            height: auto;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="bg-lines"></div>
-  <div class="lp-wrapper">
-    <div class="header-section">
-      <p class="section-label">Jogos do Dia</p>
-      <div class="carousel-container">
-        <div class="carousel-track">
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://crests.football-data.org/773.png" alt=""><span>França</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://crests.football-data.org/770.png" alt=""><span>Inglaterra</span></div>
+
+    <div class="container">
+        
+        <div class="content-wrapper">
+            <div class="header-box">
+                <h2>Comunidade do <span>Jota</span></h2>
+                <p>A maior <b>comunidade gratuita</b> de futebol!</p>
+            </div>
+
+            <div class="image-wrapper">
+                <img src="1 (1).png" alt="Especialista">
+            </div>
+
+            <h1 class="main-title">
+                Os melhores palpites do <span class="highlight-green">DIA</span><br>
+                estão saindo agora na<br>
+                <span class="highlight-green">MINHA COMUNIDADE</span>
+            </h1>
+
+            <div class="alert-box">
+                <span class="warning-text">⚠️ ENTRE E AGUARDE ⚠️</span>
+                <p>As entradas serão enviadas em instantes!</p>
+            </div>
+
+            <a href="https://mais.red/run/zecaorganico" class="cta-button" onclick="trackClick()">
+                Participar da Comunidade
+            </a>
         </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1980/image" alt=""><span>Ponte Preta</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/11920/image" alt=""><span>Goiás</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1981/image" alt=""><span>Criciúma</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/7074/image" alt=""><span>Vila Nova</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1969/image" alt=""><span>Sport</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://raw.githubusercontent.com/JCPrime01/jp-api-hnc/main/operario-ferroviario.74223dbc.png" alt=""><span>Operário</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/6832/image" alt=""><span>Atlético-GO</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/43093/image" alt=""><span>Athletic SJDR</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://crests.football-data.org/773.png" alt=""><span>França</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://crests.football-data.org/770.png" alt=""><span>Inglaterra</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1980/image" alt=""><span>Ponte Preta</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/11920/image" alt=""><span>Goiás</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1981/image" alt=""><span>Criciúma</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/7074/image" alt=""><span>Vila Nova</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/1969/image" alt=""><span>Sport</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://raw.githubusercontent.com/JCPrime01/jp-api-hnc/main/operario-ferroviario.74223dbc.png" alt=""><span>Operário</span></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <div class="teams-row">
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/6832/image" alt=""><span>Atlético-GO</span></div>
-          <div class="vs">VS</div>
-          <div class="team"><img src="https://api.sofascore.app/api/v1/team/43093/image" alt=""><span>Athletic SJDR</span></div>
-        </div>
-      </div>
-        </div>
-      </div>
-      <h1 class="headline">ANÁLISE<br><span style="color:var(--primary)">LIBERADA</span></h1>
+
+        <!-- SELO EXTENSO NO FIM DA LP -->
+        <img src="BATEUBET.png" alt="Selo Bateubet / Ministério da Fazenda" class="stamp-bottom">
+
     </div>
-    <div class="footer-section">
-      <div class="alert-box"><p>Grupo gratuito no telegram</p></div>
-      <div class="btn-container">
-        <a href="https://pe.hublab.uk/" class="btn-border-beam">
-          <span class="btn-content"><svg width="22" height="22" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:8px"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.64-.204-.657-.64.136-.954l11.566-4.462c.537-.194 1.006.131.832.944z"/></svg> ENTRAR NO GRUPO</span>
-        </a>
-      </div>
-      <img src="https://raw.githubusercontent.com/JCPrime01/jp-api-hnc/main/BATEUBET.png" class="bateubet-footer" alt="">
-    </div>
-  </div>
+
+    <script>
+    function trackClick() {
+        fbq('track', 'Subscribe');
+        console.log("Lead enviado!");
+    }
+    </script>
+
 </body>
 </html>
